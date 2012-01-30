@@ -1,0 +1,74 @@
+pal
+------------------------------------------
+
+A cal-like calendar with day highlight and support for events
+
+Some of main features are: Assign different colors to different
+types of events; Search events with regular expressions; Includes
+calendars for holiday (US, Christian, etc) and historical events;
+One-time events and a variety of recurring events are supported;
+Easy-to-use interface for interactively adding events to calendars;
+Automated deletion of old events; Generation of HTML calendars;
+Generation of LaTeX calendar suitable for printing.
+
+Runtime requirements:
+  cygwin
+  glib2
+  libintl8
+  libreadline6
+
+Build requirements:
+  cygwin
+  glib-devel
+  libintl
+  readline
+
+Canonical homepage:
+  http://sourceforge.net/projects/palcal
+  http://packages.debian.org/unstable/pal
+
+Canonical download:
+  See above
+
+Version control repository:
+  See sourceforge
+
+Mailing list:
+
+Forum / Wiki:
+
+IRC channel:
+
+Upstream contact:
+  Maintainer: Scott Kuhl <skuhlusers.sourceforge.net>, <scott@kuhlweb.com>
+  Bugs: Sourceforge
+
+License:
+  GPL
+
+Language:
+  C
+
+------------------------------------------
+
+Build instructions:
+  unpack pal-*-src.tar.bz2
+    if you use setup to install this source package, it will be
+    unpacked under /usr/src automatically
+  cd /usr/src
+  ./pal*.sh all
+
+------------------------------------------
+
+Files included in the binary distribution:
+  See content of *.tar.gz
+
+------------------------------------------
+
+Port Notes:
+
+----- version 0.3.5-1 -----
+- Initial release 2008-03-12 Jari Aalto
+
+Cygwin port maintained by: Jari Aalto <jari.aalto@cante.net>
+Copyright (C) 2008 Jari Aalto; Licensed under GPL v2 or later

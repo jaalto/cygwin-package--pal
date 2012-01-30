@@ -1,0 +1,10 @@
+sdesc: "A cal-like calendar with day highlight and support for events"
+ldesc: "Some of main features are: Assign different colors to different
+types of events; Search events with regular expressions; Includes
+calendars for holiday (US, Christian, etc) and historical events;
+One-time events and a variety of recurring events are supported;
+Easy-to-use interface for interactively adding events to calendars;
+Automated deletion of old events; Generation of HTML calendars;
+Generation of LaTeX calendar suitable for printing."
+category: Utils
+requires: cygwin glib2 libintl8 libreadline6

@@ -1,0 +1,26 @@
+From ceeb7ea5a79affa4fb3d9cebf236e8eac3e2ca0f Mon Sep 17 00:00:00 2001
+From: Jari Aalto <jari.aalto@cante.net>
+Date: Thu, 13 Mar 2008 09:36:01 +0200
+Subject: [PATCH] src/Makefile: (install): ignore find rm
+
+Signed-off-by: Jari Aalto <jari.aalto@cante.net>
+---
+ src/Makefile |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 87d0fc9..abc7039 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -66,7 +66,7 @@ install: install-no-rm
+ 	@echo " that you need these files, you should probably delete them"
+ 	@echo " by always answering 'y'."
+ 	@# prompt about removing old doc directories
+-	@find ${prefix}/share/doc -name pal-[0-9].[0-9].[0-9]\* -a \! -name pal-$(PAL_VERSION) -a -type d -maxdepth 1 -exec rm -ri {} \;;
++	#@find ${prefix}/share/doc  -maxdepth 1 -name pal-[0-9].[0-9].[0-9]\* -a \! -name pal-$(PAL_VERSION) -a -type d -exec rm -ri {} \;;
+ 	@# Remove pal.conf from its old location
+ 	@rm -f ${prefix}/share/pal/pal.conf;
+ 	@echo
+-- 
+1.5.3.8
+
