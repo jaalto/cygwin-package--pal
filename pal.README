@@ -12,13 +12,11 @@ Automated deletion of old events; Generation of HTML calendars;
 Generation of LaTeX calendar suitable for printing.
 
 Runtime requirements:
-  cygwin
-  glib2
+  libglib2.0_0
   libintl8
-  libreadline6
+  libreadline7
 
 Build requirements:
-  cygwin
   glib-devel
   libintl
   readline
@@ -61,14 +59,18 @@ Build instructions:
 ------------------------------------------
 
 Files included in the binary distribution:
-  See content of *.tar.gz
+  See Cygwin package archive
 
 ------------------------------------------
 
 Port Notes:
 
+----- version 0.3.5-2 -----
+- New release 2015-02-19 Jari Aalto
+- Compiled with libreadline7
+
 ----- version 0.3.5-1 -----
 - Initial release 2008-03-12 Jari Aalto
 
 Cygwin port maintained by: Jari Aalto <jari.aalto@cante.net>
-Copyright (C) 2008 Jari Aalto; Licensed under GPL v2 or later
+Copyright (C) 2008-2015 Jari Aalto; Licensed under GPL v2 or later

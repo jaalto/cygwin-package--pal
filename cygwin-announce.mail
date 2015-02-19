@@ -1,6 +1,5 @@
 To: cygwin-announce@cygwin.com
-Subject: Updated: package N.N
-Subject: New package: pal 0.3.5-1 -- A cal-like calendar with day highlight and support for events
+Subject: Updated: pal 0.3.5-2 -- A cal-like calendar with day highlight and support for events
 
 PACKAGE DESCRIPTION
 ===================
@@ -26,6 +25,7 @@ See
 INSTALL OR UPGRADE NOTES
 ========================
 
+Cygwin: compiled with libreadline7
 Standard install.
 
 CYGWIN INSTALLATION INFORMATION

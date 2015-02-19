@@ -7,4 +7,4 @@ Easy-to-use interface for interactively adding events to calendars;
 Automated deletion of old events; Generation of HTML calendars;
 Generation of LaTeX calendar suitable for printing."
 category: Utils
-requires: cygwin glib2 libintl8 libreadline6
+requires: libglib2.0_0 libintl8 libreadline7
