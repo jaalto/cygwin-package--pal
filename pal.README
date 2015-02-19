@@ -17,6 +17,7 @@ Runtime requirements:
   libreadline7
 
 Build requirements:
+  quilt
   glib-devel
   libintl
   readline
