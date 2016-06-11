@@ -1,4 +1,3 @@
 0001-Makefile-new-file.patch
 0001-src-Makefile-install-ignore-find-rm.patch
-0001-src-Makefile-remove-strip.patch
 10-makefile-ignore-root-install.patch
