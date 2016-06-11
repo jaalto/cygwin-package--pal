@@ -15,12 +15,14 @@ Runtime requirements:
   libglib2.0_0
   libintl8
   libreadline7
+  libncursesw10
 
 Build requirements:
   quilt
   glib-devel
   libintl
   readline
+  libcurses-devel
 
 Canonical homepage:
   http://sourceforge.net/projects/palcal
