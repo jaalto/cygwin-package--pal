@@ -19,7 +19,6 @@ do
     to="$dest/$i"
 
     [ -e "$from" ] || continue
-    [ -e "$to"   ] && continue
 
     case "$i" in
         */) # Directory
