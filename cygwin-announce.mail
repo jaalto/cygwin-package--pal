@@ -19,14 +19,12 @@ Generation of LaTeX calendar suitable for printing.
 CHANGES SINCE LAST RELEASE
 ==========================
 
-See
-  /usr/share/doc/pal-*/ChangeLog
-  http://palcal.cvs.sourceforge.net/palcal/pal/ChangeLog?revision=HEAD&view=markup
+/usr/share/doc/pal-*/ChangeLog
+http://palcal.cvs.sourceforge.net/palcal/pal/ChangeLog?revision=HEAD&view=markup
 
 INSTALL OR UPGRADE NOTES
 ========================
 
-Cygwin: compiled with libreadline7
 Standard install.
 
 CYGWIN INSTALLATION INFORMATION
