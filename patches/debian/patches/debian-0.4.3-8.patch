@@ -1,0 +1,306 @@
+From 64a521b7f6fae3c95a1a5a95c04f5964747a4db5 Mon Sep 17 00:00:00 2001
+From: Jari Aalto <jari.aalto@cante.net>
+Date: Sat, 11 Jun 2016 13:53:55 +0300
+Subject: [PATCH] debian 0.4.3-8
+Organization: Private
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Jari Aalto <jari.aalto@cante.net>
+---
+ pal.1.template    |  4 ++--
+ share/austria.pal | 10 +++++-----
+ share/history.pal |  1 -
+ src/Makefile      |  2 +-
+ src/add.c         |  2 +-
+ src/colorize.c    |  2 +-
+ src/del.c         |  2 +-
+ src/edit.c        |  2 +-
+ src/main.c        |  4 ++--
+ src/manage.c      | 23 ++++++++++++-----------
+ src/output.c      |  2 +-
+ src/remind.c      |  2 +-
+ src/rl.c          | 13 ++++++++++---
+ src/rl.h          |  1 +
+ 14 files changed, 39 insertions(+), 31 deletions(-)
+
+diff --git a/pal.1.template b/pal.1.template
+index 1bafd3e..becd4c4 100644
+--- a/pal.1.template
++++ b/pal.1.template
+@@ -28,7 +28,7 @@ pal \- calendar with events
+ 
+ .SH DESCRIPTION
+ .PP
+-\fBpal\fR is a command\(hyline calendar utility.  It displays a \fBcal(1)\fR\(hylike calender and events specified in text files.
++\fBpal\fR is a command\(hyline calendar utility.  It displays a \fBcal(1)\fR\(hylike calendar and events specified in text files.
+ 
+ .SH OPTIONS
+ The following options are provided by \fBpal\fR:
+@@ -73,7 +73,7 @@ Do not use colors, regardless of terminal type.
+ Generates output readable by sendmail by adding "From:" and "Subject:" fields and forcing \fB\-\-nocolor\fR.  For example, you could mail yourself a reminder of the upcoming events in the next week with \fBpal \-\-mail \-r 7 | sendmail username\fR.  Note: For the calendar to appear correctly, make sure your email client is using a fixed width font.
+ .TP
+ .B \-\-html
+-Generates a HTML calendar suitable for display on a web page.  It does not generate a complete HTML document so that you can add your website's header and footer around the calendar.  The number of months shown on the calendar can be adjusted with \fB\-c\fR.  You will need to use Cascading Style Sheets (CSS) to change how the calendar appears; if you do not use a style sheet, the calendar will not have any borders.  See \fI/usr/share/doc/pal/example.css\fR for an example style.  SECURITY NOTE: If you set up pal so it is being executed server\(hyside, it is recommended that you do not allow web page visitors to directly change the parameters sent to pal.  Allowing users to pass strange parameters (such as extremely long ones) can be a security risk.
++Generates a HTML calendar suitable for display on a web page.  It does not generate a complete HTML document so that you can add your website's header and footer around the calendar.  The number of months shown on the calendar can be adjusted with \fB\-c\fR.  You will need to use Cascading Style Sheets (CSS) to change how the calendar appears; if you do not use a style sheet, the calendar will not have any borders.  See \fI/usr/share/doc/pal/examples/example.css\fR for an example style.  SECURITY NOTE: If you set up pal so it is being executed server\(hyside, it is recommended that you do not allow web page visitors to directly change the parameters sent to pal.  Allowing users to pass strange parameters (such as extremely long ones) can be a security risk.
+ .TP
+ .B \-\-latex
+ Generates a LaTeX source for a calendar that can be used to generate a printer\(hyfriendly DVI (run "pal \-\-latex > file.tex; latex file.tex"), PostScript or PDF (run "pal \-\-latex > file.tex; pdflatex file.tex").  The number of months shown on the calendar can be adjusted with \fB\-c\fR.
+diff --git a/share/austria.pal b/share/austria.pal
+index 40ca0ea..1b50ba3 100644
+--- a/share/austria.pal
++++ b/share/austria.pal
+@@ -5,13 +5,13 @@
+ 
+ AT Austria
+ 00000101 Neujahr
+-00000106 Heilige Dreikönige
++00000106 Heilige DreikÃ¶nige
+ 00000214 Valentinstag
+ 00000501 Tag der Arbeit
+-00000815 Mariä Himmelfahrt
++00000815 MariÃ¤ Himmelfahrt
+ 00001026 Nationalfeiertag
+ 00001101 Allerheiligen
+-00001208 Mariä Empfängnis
++00001208 MariÃ¤ EmpfÃ¤ngnis
+ 00001224 Heilig Abend
+ 00001225 Christtag
+ 00001226 Stefanitag
+@@ -20,7 +20,7 @@ AT Austria
+ Easter-047 Faschingsdienstag
+ Easter-046 Aschermittwoch
+ Easter-007 Palmsonntag
+-Easter-003 Gründonnerstag
++Easter-003 GrÃ¼ndonnerstag
+ Easter-002 Karfreitag
+ Easter     Ostersonntag
+ Easter+001 Ostermontag
+@@ -32,4 +32,4 @@ Easter+060 Fronleichnam
+ *03L1 Anfang Sommerzeit --- Uhren vorstellen
+ *0521 Muttertag
+ *0621 Vatertag
+-*10L1 Ende Sommerzeit --- Uhren zurückstellen
++*10L1 Ende Sommerzeit --- Uhren zurÃ¼ckstellen
+diff --git a/share/history.pal b/share/history.pal
+index a38f6b0..b1b03a0 100644
+--- a/share/history.pal
++++ b/share/history.pal
+@@ -110,7 +110,6 @@ HH History
+ 00000414 Titanic hits iceberg and sinks, 1912
+ 00000415 US President Abraham Lincoln dies, 1865
+ 00000415 Ray Kroc opens first McDonalds in Des Plaines, IL, 1955
+-00000416 Lincoln shot in Ford's Theatre by John Wilkes Booth, 1865
+ 00000417 Bay of Pigs invasion crushed by Castro forces, 1961
+ 00000418 Einstein's Death, 1955
+ 00000418 First Laundromat opens, Fort Worth Texas, 1934
+diff --git a/src/Makefile b/src/Makefile
+index 488e0f4..ac522ec 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -4,7 +4,7 @@
+ 
+ INCLDIR = -I${prefix}/include `pkg-config --cflags glib-2.0`
+ LIBDIR  =
+-LIBS    = `pkg-config --libs glib-2.0` -lreadline -lncurses
++LIBS    = `pkg-config --libs glib-2.0` -lreadline -lncursesw
+ 
+ SRC     = main.c colorize.c output.c input.c event.c rl.c html.c latex.c \
+           add.c edit.c del.c remind.c search.c manage.c
+diff --git a/src/add.c b/src/add.c
+index 55cb256..46b8c62 100644
+--- a/src/add.c
++++ b/src/add.c
+@@ -18,7 +18,7 @@
+  *
+  */
+ 
+-#include <curses.h>
++#include <ncursesw/curses.h>
+ 
+ #include "main.h"
+ #include "output.h"
+diff --git a/src/colorize.c b/src/colorize.c
+index 7e60390..86056f5 100644
+--- a/src/colorize.c
++++ b/src/colorize.c
+@@ -20,7 +20,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h> /* for getenv() */
+-#include <curses.h>
++#include <ncursesw/curses.h>
+ 
+ #include "main.h"
+ #include "colorize.h"
+diff --git a/src/del.c b/src/del.c
+index 1dbc763..7c8080a 100644
+--- a/src/del.c
++++ b/src/del.c
+@@ -19,7 +19,7 @@
+  */
+ 
+ #include <stdio.h>
+-#include <ncurses.h>
++#include <ncursesw/ncurses.h>
+ 
+ #include "main.h"
+ #include "output.h"
+diff --git a/src/edit.c b/src/edit.c
+index c50be59..f226578 100644
+--- a/src/edit.c
++++ b/src/edit.c
+@@ -18,7 +18,7 @@
+  *
+  */
+ 
+-#include <ncurses.h>
++#include <ncursesw/ncurses.h>
+ 
+ #include "main.h"
+ #include "output.h"
+diff --git a/src/main.c b/src/main.c
+index 9e8284a..7e5584c 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -27,7 +27,7 @@
+ #include <regex.h>     /* regular expressions */
+ #include <glib.h>
+ 
+-#include <ncurses.h>
++#include <ncursesw/ncurses.h>
+ 
+ #include "output.h"
+ #include "main.h"
+@@ -702,7 +702,7 @@ void pal_main_reload(void)
+ 
+ int main(gint argc, gchar** argv)
+ {
+-    G_CONST_RETURN gchar *charset = NULL;
++    const gchar *charset = NULL;
+     gint on_arg = 1;
+     GDate* today = g_date_new();
+ 
+diff --git a/src/manage.c b/src/manage.c
+index 96f05b3..b9e379f 100644
+--- a/src/manage.c
++++ b/src/manage.c
+@@ -21,8 +21,8 @@
+ #include "main.h"
+ 
+ #include <readline/readline.h>
+-#include <ncurses.h>
+-#include <term.h>
++#include <ncursesw/ncurses.h>
++#include <ncursesw/term.h>
+ #include <signal.h>
+ #include <sys/ioctl.h> /* get # columns for terminal */
+ 
+@@ -403,7 +403,7 @@ void pal_manage(void)
+     rl_initialize();     /* Initialise readline so we can fiddle stuff */
+     rl_already_prompted = 1;
+     rl_redisplay_function = pal_rl_ncurses_hack;
+-    rl_pre_input_hook = (Function*) pal_rl_ncurses_hack;
++    rl_pre_input_hook = pal_rl_ncurses_ihack;
+ 
+ 
+     /* initialize curses */
+@@ -429,14 +429,15 @@ void pal_manage(void)
+     if(has_colors())
+     {
+         start_color();
+-        init_pair(COLOR_BLACK,   COLOR_BLACK,   COLOR_BLACK);
+-        init_pair(COLOR_GREEN,   COLOR_GREEN,   COLOR_BLACK);
+-        init_pair(COLOR_RED,     COLOR_RED,     COLOR_BLACK);
+-        init_pair(COLOR_CYAN,    COLOR_CYAN,    COLOR_BLACK);
+-        init_pair(COLOR_WHITE,   COLOR_WHITE,   COLOR_BLACK);
+-        init_pair(COLOR_MAGENTA, COLOR_MAGENTA, COLOR_BLACK);
+-        init_pair(COLOR_BLUE,    COLOR_BLUE,    COLOR_BLACK);
+-        init_pair(COLOR_YELLOW,  COLOR_YELLOW,  COLOR_BLACK);
++        use_default_colors();
++        init_pair(COLOR_BLACK,   COLOR_BLACK,   -1);
++        init_pair(COLOR_GREEN,   COLOR_GREEN,   -1);
++        init_pair(COLOR_RED,     COLOR_RED,     -1);
++        init_pair(COLOR_CYAN,    COLOR_CYAN,    -1);
++        init_pair(COLOR_WHITE,   COLOR_WHITE,   -1);
++        init_pair(COLOR_MAGENTA, COLOR_MAGENTA, -1);
++        init_pair(COLOR_BLUE,    COLOR_BLUE,    -1);
++        init_pair(COLOR_YELLOW,  COLOR_YELLOW,  -1);
+     }
+     else
+ 	set_colorize(-2);
+diff --git a/src/output.c b/src/output.c
+index 97aaa0f..7a8b5c7 100644
+--- a/src/output.c
++++ b/src/output.c
+@@ -21,7 +21,7 @@
+ #include <stdarg.h>
+ #include <time.h>
+ #include <string.h>
+-#include <curses.h>
++#include <ncursesw/curses.h>
+ 
+ /* for vsnprintf */
+ #include <stdarg.h>
+diff --git a/src/remind.c b/src/remind.c
+index 4dcbafd..cd96bdf 100644
+--- a/src/remind.c
++++ b/src/remind.c
+@@ -56,7 +56,7 @@ static void pal_remind_event(void)
+     FILE* tmp_stream;
+     int return_val;
+     gchar* email_add;
+-    G_CONST_RETURN gchar *charset;
++    const gchar *charset;
+     at_string = g_malloc(1024*sizeof(gchar));
+ 
+     pal_output_fg(BRIGHT, GREEN, "* * * ");
+diff --git a/src/rl.c b/src/rl.c
+index 0c88517..0807cf9 100644
+--- a/src/rl.c
++++ b/src/rl.c
+@@ -21,10 +21,10 @@
+ #include "main.h"
+ 
+ #include <readline/readline.h>
+-#include <ncurses.h>
++#include <ncursesw/ncurses.h>
+ #include <time.h>
+ 
+-#include <term.h>
++#include <ncursesw/term.h>
+ 
+ 
+ #include "output.h"
+@@ -204,10 +204,17 @@ void pal_rl_ncurses_hack(void)
+         printw( "%s", rl_line_buffer + start );
+ 
+     /* Place cursor, taking into account marker */
+-    move(readline_y, readline_x + rl_point - start + (start > 0) );
++    move(readline_y, readline_x + (start > 0)
++                + g_utf8_strlen(rl_line_buffer + start, rl_point - start) );
+     refresh();
+ }
+ 
++int pal_rl_ncurses_ihack(void)
++{
++    pal_rl_ncurses_hack;
++    return 0;
++}
++
+ gboolean pal_rl_get_y_n(const char* prompt)
+ {
+     gchar *s = NULL;
+diff --git a/src/rl.h b/src/rl.h
+index 9121c71..6ea7afc 100644
+--- a/src/rl.h
++++ b/src/rl.h
+@@ -41,4 +41,5 @@ gboolean pal_rl_get_y_n(const char* prompt);
+ void pal_rl_completions_output(char **matches, int num_matches, int max_length );
+ PalEvent* pal_rl_get_event(GDate** d, gboolean allow_global);
+ void pal_rl_ncurses_hack(void);
++int pal_rl_ncurses_ihack(void);
+ #endif
+-- 
+2.8.3
+
